@@ -1,2 +1,3 @@
 export const ADD_FROM_API = 'ADD_FROM_API'
 export const INCREMENT_INDEX = 'INCREMENT_INDEX'
+export const ADD_ALL_FROM_API = 'ADD_ALL_FROM_API'

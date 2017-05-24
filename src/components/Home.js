@@ -1,24 +1,27 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import Title from './core/Title'
+import Button from './core/Button'
 // redux
-import { fetchFromAPI } from '../actions'
+import { fetchFromAPI, fetchAllFromAPI } from '../actions'
 
 
 class Home extends React.Component {
   componentDidMount() {
     console.log(`Home componentDidMount`)
-    this.props.fetchFromAPI(this.props.index)
+    // this.props.fetchFromAPI(this.props.index)
+    this.props.fetchAllFromAPI()
   }
 
   render() {
     return (
       <div>
-        <h2>Home</h2>
+        <Title>Home</Title>
         <ul>
           { this.props.people.map( p => {
             return (
-              <li key={p.url}>{p.name}</li>
+              <li key={p.url}><Button handleClick={() => {alert(`add ${p.name}`)}}>Add</Button>{p.name}</li>
             )
           })}
         </ul>
@@ -38,6 +41,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchFromAPI: (index) => { dispatch(fetchFromAPI(index)) },
+    fetchAllFromAPI: () => {dispatch(fetchAllFromAPI())}
   }
 }
 
