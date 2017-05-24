@@ -2,7 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Title from './core/Title'
-import Button from './core/Button'
+// import MyButton from './core/Button'
+import ProfilePhoto from '../assets/images/ewoks.jpg'
+import { Button, Card, Image, List } from 'semantic-ui-react'
+
 // redux
 import { fetchFromAPI, fetchAllFromAPI, addPersonToDb } from '../actions'
 
@@ -26,13 +29,55 @@ class Home extends React.Component {
       return (
         <div>
           <Title>Home</Title>
-          <ul>
+
+          <Card.Group>
+
             { this.props.people.map( p => {
               return (
-                <li key={p.url}><Button handleClick={() => { this.props.addPersonToDb(p) }}>Add</Button>{p.name}</li>
+                <Card key={p.id}>
+                  <Card.Content>
+                    <Image floated='right' size='tiny' src={ProfilePhoto} />
+                    <Card.Header>
+                      {p.name}
+                    </Card.Header>
+                    <Card.Meta>
+                      Stars in {p.films.length} films
+                    </Card.Meta>
+                    <Card.Description>
+
+                      <List>
+                        <List.Item>
+                          <List.Icon name='intergender' />
+                          <List.Content>{p.gender}</List.Content>
+                        </List.Item>
+                        <List.Item>
+                          <List.Icon name='resize vertical' />
+                          <List.Content>{p.height} cm</List.Content>
+                        </List.Item>
+                        <List.Item>
+                          <List.Icon name='eye' />
+                          <List.Content>{p.eye_color}</List.Content>
+                        </List.Item>
+                        <List.Item>
+                          <List.Icon name='calendar' />
+                          <List.Content>{p.birth_year}</List.Content>
+                        </List.Item>
+                      </List>
+
+                    </Card.Description>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <div className='ui two buttons'>
+                      <Button basic color='green' onClick={() => { this.props.addPersonToDb(p) }} >Add</Button>
+
+                    </div>
+                  </Card.Content>
+                </Card>
               )
             })}
-          </ul>
+
+          </Card.Group>
+
 
         </div>
       )

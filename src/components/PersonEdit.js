@@ -15,7 +15,8 @@ class PersonEdit extends React.Component {
     this.state = {
       id: '',
       name: '',
-      notes: ''
+      notes: '',
+      is_submitted: false
     }
     this.is_submitted = false
 
@@ -49,12 +50,13 @@ class PersonEdit extends React.Component {
     this.props.editPersonInDb(this.state)
 
     this.is_submitted = true;
+    this.setState({is_submitted: true})
 
   }
 
   render() {
     console.log("render", this.props.person)
-    if( !this.is_submitted ) {
+    if( !this.state.is_submitted ) {
       return (
         <div>
           <Title>Edit</Title>
@@ -69,9 +71,11 @@ class PersonEdit extends React.Component {
       )
     }
     else {
+      console.log("elseeeee", this.props)
       return (
         <Redirect to={{
-          pathname: '/data'
+          pathname: '/data',
+          state: { from: this.props.location }
         }} />
       )
     }
