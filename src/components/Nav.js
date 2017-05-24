@@ -16,12 +16,6 @@ export default class MenuExampleSecondary extends Component {
         <Link to="/"><Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} >Home</Menu.Item></Link>
         <Link to='/data'><Menu.Item name='data' active={activeItem === 'data'} onClick={this.handleItemClick} > Data </Menu.Item></Link>
 
-        <Menu.Menu position='right'>
-          <Menu.Item>
-            <Input icon='search' placeholder='Search...' />
-          </Menu.Item>
-          <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} />
-        </Menu.Menu>
       </Menu>
     )
   }
