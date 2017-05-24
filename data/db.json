@@ -2,7 +2,7 @@
   "people": [
     {
       "name": "Obi-Wan Kenobi",
-      "notes": "haha saaa",
+      "notes": "haha saaa blahb baba",
       "id": "0dc8131d-d2e3-4e73-a89d-880682c38445"
     },
     {
@@ -24,26 +24,6 @@
       "name": "Leia Organa",
       "notes": "gggg",
       "id": "bb106fab-9b0f-4b12-9da6-a41de7eadcb0"
-    },
-    {
-      "id": "271f664a-4760-44bf-b060-f063fd79d59d",
-      "name": "Owen Lars",
-      "notes": ""
-    },
-    {
-      "id": "e78e5b81-05a3-4d9b-8800-618a0bd78edf",
-      "name": "Beru Whitesun lars",
-      "notes": ""
-    },
-    {
-      "id": "890bf256-f4e7-48f2-b1c9-efac7df6f1f7",
-      "name": "R5-D4",
-      "notes": ""
-    },
-    {
-      "name": "Owen Lars",
-      "notes": "aaaa bvbb aasass",
-      "id": "088e43a4-e96c-449c-9158-f4e8e7790a1d"
     }
   ],
   "films": []

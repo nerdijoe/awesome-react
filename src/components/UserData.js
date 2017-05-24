@@ -1,11 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { Button, Feed, Icon } from 'semantic-ui-react'
 
 import { fetchPeopleFromUserAPI, deletePersonInDb } from '../actions'
 
-import Button from './core/Button'
+// import Button from './core/Button'
 import SearchPerson from './SearchPerson'
+import ProfilePhoto from '../assets/images/ewoks.jpg'
+
 
 class UserData extends React.Component {
   componentDidMount() {
@@ -29,6 +32,39 @@ class UserData extends React.Component {
             )
           })}
         </ul>
+
+        <Feed>
+          {this.props.people.map( p => {
+            return (
+              <Feed.Event key={p.id}>
+                <Feed.Label>
+                  <img src={ProfilePhoto} />
+                </Feed.Label>
+                <Feed.Content>
+                  <Feed.Summary>
+                    <Feed.User>{p.name}</Feed.User>
+                    <Feed.Date>{p.notes}</Feed.Date>
+                  </Feed.Summary>
+                  <Feed.Extra text></Feed.Extra>
+                  <Feed.Meta>
+                    <Feed.Like>
+                      <Icon name='delete' onClick={() => { this.props.deletePersonInDb(p.id)}}/>
+                    </Feed.Like>
+                    <Feed.Like>
+                      <Link to={`/personedit/${p.id}`} >
+                        <Icon name='edit' />
+                      </Link>
+
+                    </Feed.Like>
+                  </Feed.Meta>
+                </Feed.Content>
+              </Feed.Event>
+            )
+          })}
+
+
+        </Feed>
+
 
         <SearchPerson />
       </div>
