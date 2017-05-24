@@ -22,7 +22,7 @@ class UserData extends React.Component {
             return (
               <li key={p.id}>
                 <Button handleClick={() => { this.props.deletePersonInDb(p.id)}}>x</Button>
-                {p.id} - {p.name} - {p.notes}
+                {p.name} - {p.notes}
                 <Link to={`/person/${p.id}`} > detail </Link>
                 <Link to={`/personedit/${p.id}`} > edit </Link>
               </li>

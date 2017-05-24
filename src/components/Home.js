@@ -2,7 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Title from './core/Title'
-import Button from './core/Button'
+import MyButton from './core/Button'
+
+import { Button } from 'semantic-ui-react'
+
 // redux
 import { fetchFromAPI, fetchAllFromAPI, addPersonToDb } from '../actions'
 
@@ -29,7 +32,10 @@ class Home extends React.Component {
           <ul>
             { this.props.people.map( p => {
               return (
-                <li key={p.url}><Button handleClick={() => { this.props.addPersonToDb(p) }}>Add</Button>{p.name}</li>
+                <li key={p.url}>
+                  <Button color='green' onClick={() => { this.props.addPersonToDb(p) }}>Add</Button>
+                  {p.name}
+                </li>
               )
             })}
           </ul>
