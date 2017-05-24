@@ -1,7 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import { fetchPeopleFromUserAPI } from '../actions'
+import { fetchPeopleFromUserAPI, deletePersonInDb } from '../actions'
+
+import Button from './core/Button'
+import SearchPerson from './SearchPerson'
 
 class UserData extends React.Component {
   componentDidMount() {
@@ -16,10 +20,17 @@ class UserData extends React.Component {
         <ul>
           {this.props.people.map( p => {
             return (
-              <li key={p.id}>{p.id}-{p.name}</li>
+              <li key={p.id}>
+                <Button handleClick={() => { this.props.deletePersonInDb(p.id)}}>x</Button>
+                {p.id} - {p.name} - {p.notes}
+                <Link to={`/person/${p.id}`} > detail </Link>
+                <Link to={`/personedit/${p.id}`} > edit </Link>
+              </li>
             )
           })}
         </ul>
+
+        <SearchPerson />
       </div>
     )
   }
@@ -33,7 +44,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchPeopleFromUserAPI: () => {dispatch(fetchPeopleFromUserAPI())}
+    fetchPeopleFromUserAPI: () => {dispatch(fetchPeopleFromUserAPI())},
+    deletePersonInDb: (id) => {dispatch(deletePersonInDb(id))}
   }
 }
 

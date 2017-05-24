@@ -1,44 +1,29 @@
 {
   "people": [
     {
-      "id": 1,
-      "name": "Luke Skywalker",
-      "notes": ""
-    },
-    {
-      "id": 2,
-      "name": "R2-D2",
-      "notes": ""
-    },
-    {
-      "id": 3,
-      "name": "Leia Organa",
-      "notes": ""
-    },
-    {
-      "id": 4,
-      "name": "Beru Whitesun lars",
-      "notes": ""
-    },
-    {
-      "id": 5,
-      "name": "R5-D4",
-      "notes": ""
-    },
-    {
-      "id": 6,
-      "name": "Owen Lars",
-      "notes": ""
-    },
-    {
-      "id": 7,
-      "name": "Leia Organa",
-      "notes": ""
-    },
-    {
-      "id": 8,
+      "id": "0dc8131d-d2e3-4e73-a89d-880682c38445",
       "name": "Obi-Wan Kenobi",
       "notes": ""
+    },
+    {
+      "id": "5953e048-85e4-4411-bba4-8d174eb7ffb1",
+      "name": "Darth Vader",
+      "notes": ""
+    },
+    {
+      "name": "Luke Skywalker",
+      "notes": "test ggg ddd",
+      "id": "aae3d137-d3b8-4094-977c-fa31e1f93e8d"
+    },
+    {
+      "name": "Obi-Wan Kenobi",
+      "notes": "hey",
+      "id": "773bd381-16a3-443f-9579-de7687b4f768"
+    },
+    {
+      "name": "Leia Organa",
+      "notes": "gggg",
+      "id": "bb106fab-9b0f-4b12-9da6-a41de7eadcb0"
     }
   ],
   "films": []

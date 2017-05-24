@@ -7,6 +7,9 @@ import store from './store/manageStore'
 import Nav from './components/Nav'
 import Home from './components/Home'
 import UserData from './components/UserData'
+import Person from './components/Person'
+import PersonEdit from './components/PersonEdit'
+
 
 class App extends Component {
   render() {
@@ -20,6 +23,9 @@ class App extends Component {
 
             <Route exact path='/' component={Home} />
             <Route path='/data' component={UserData} />
+            <Route path='/person/:id' component={(props) => <Person match={props.match} />} />
+            <Route path='/personedit/:id' component={(props) => <PersonEdit match={props.match} />} />
+
           </div>
 
 

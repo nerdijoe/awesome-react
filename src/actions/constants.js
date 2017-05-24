@@ -1,7 +1,13 @@
+// StarwarsApi
 export const ADD_FROM_API = 'ADD_FROM_API'
 export const INCREMENT_INDEX = 'INCREMENT_INDEX'
 export const ADD_ALL_FROM_API = 'ADD_ALL_FROM_API'
 
+// UserApi
 export const REFRESH_PEOPLE_DATA = 'REFRESH_PEOPLE_DATA'
-export const ADD_PERSON_TO_USER_DATA = 'ADD_PERSON_TO_USER_DATA'
+export const ADD_PERSON = 'ADD_PERSON'
 export const INCREMENT_LASTID = 'INCREMENT_LASTID'
+export const DELETE_PERSON = 'DELETE_PERSON'
+export const GET_PERSON_BY_ID = 'GET_PERSON_BY_ID'
+export const EDIT_PERSON = 'EDIT_PERSON'
+export const SEARCH_BY_NAME = 'SEARCH_BY_NAME'
