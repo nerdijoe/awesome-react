@@ -29,7 +29,7 @@ class Home extends React.Component {
           <ul>
             { this.props.people.map( p => {
               return (
-                <li key={p.url}><Button handleClick={() => { this.props.addPersonToDb(p, this.props.lastid) }}>Add</Button>{p.name}</li>
+                <li key={p.url}><Button handleClick={() => { this.props.addPersonToDb(p) }}>Add</Button>{p.name}</li>
               )
             })}
           </ul>
@@ -52,7 +52,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchFromAPI: (index) => { dispatch(fetchFromAPI(index)) },
     fetchAllFromAPI: () => {dispatch(fetchAllFromAPI())},
-    addPersonToDb: (person, lastid) => {dispatch(addPersonToDb(person))}
+    addPersonToDb: (person) => {dispatch(addPersonToDb(person))}
   }
 }
 

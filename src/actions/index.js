@@ -1,10 +1,16 @@
+import uuid from 'uuid'
+
 import {
   ADD_FROM_API,
   INCREMENT_INDEX,
   ADD_ALL_FROM_API,
-  ADD_PERSON_TO_USER_DATA,
+  ADD_PERSON,
   INCREMENT_LASTID,
-  REFRESH_PEOPLE_DATA
+  REFRESH_PEOPLE_DATA,
+  DELETE_PERSON,
+  GET_PERSON_BY_ID,
+  EDIT_PERSON,
+  SEARCH_BY_NAME
 } from './constants'
 
 
@@ -59,12 +65,12 @@ export const incrementLastid = () => {
 
 export const addPersonToUserData = (person) => {
   return {
-    type: ADD_PERSON_TO_USER_DATA,
+    type: ADD_PERSON,
     person: person
   }
 }
 
-export const addPersonToDb = (person, lastid) => {
+export const addPersonToDb = (person) => {
   return (dispatch) => {
     fetch('http://localhost:5000/people', {
       method: 'post',
@@ -73,7 +79,7 @@ export const addPersonToDb = (person, lastid) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        "id": lastid + 1,
+        "id": uuid(),
         "name": person.name,
         "notes": ""
      })
@@ -103,5 +109,69 @@ export const fetchPeopleFromUserAPI = () => {
       console.log('fetchPeopleFromUserAPI', res)
       dispatch(refreshPeopleData(res))
     })
+  }
+}
+
+export const deletePersonInUserData = (id) => {
+  return {
+    type: DELETE_PERSON,
+    id: id
+  }
+}
+
+export const deletePersonInDb = (id) => {
+  return (dispatch) => {
+    fetch(`http://localhost:5000/people/${id}`, {
+    method: 'delete'
+    })
+    .then( res => res.json() )
+    .then( res => {
+      console.log('deletePersonInDb', res)
+      dispatch(deletePersonInUserData(id))
+    })
+  }
+}
+
+export const getPersonById = (id) => {
+  return {
+    type: GET_PERSON_BY_ID,
+    id: id
+  }
+}
+
+export const editPerson = (person) => {
+  return {
+    type: EDIT_PERSON,
+    person: person
+  }
+}
+
+export const editPersonInDb = (person) => {
+  return (dispatch) => {
+
+    fetch(`http://localhost:5000/people/${person.id}`, {
+      method: 'put',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+           "name": person.name,
+           "notes": person.notes
+       })
+    })
+    .then( res => res.json() )
+    .then( res => {
+      console.log('editPersonInDb: ', res)
+
+      dispatch(editPerson(res))
+    })
+  }
+}
+
+export const searchByName = (query) => {
+  return {
+    type: SEARCH_BY_NAME,
+    query: query
   }
 }

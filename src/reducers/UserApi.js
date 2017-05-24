@@ -2,7 +2,9 @@
 const initialState = {
   people: [],
   films: [],
-  lastid: 0
+  lastid: 0,
+  selectedPerson: {},
+  searchResult: []
 }
 
 const UserApi = (state = initialState, action) => {
@@ -15,13 +17,42 @@ const UserApi = (state = initialState, action) => {
       const updatedLastid = updatedPeople.length
       return {...state, people: updatedPeople, lastid: updatedLastid}
     }
-    case 'ADD_PERSON_TO_USER_DATA': {
+    case 'ADD_PERSON': {
       const person = action.person
       const updatedPeople = [...state.people, person]
       return {...state, people: updatedPeople}
     }
     case 'INCREMENT_LASTID': {
       return {...state, lastid: state.lastid + 1}
+    }
+    case 'DELETE_PERSON': {
+      const updatedPeople = [...state.people]
+      let pos = updatedPeople.findIndex( p => p.id === action.id )
+      if(pos !== -1) {
+        updatedPeople.splice(pos, 1)
+      }
+
+      return {...state, people: updatedPeople}
+    }
+    case 'GET_PERSON_BY_ID': {
+      let pos = state.people.findIndex(p => p.id === action.id )
+      const person = {...state.people[pos]}
+      return {...state, selectedPerson: person}
+    }
+    case 'EDIT_PERSON': {
+      const updatedPeople = [...state.people]
+      let pos = updatedPeople.findIndex(p => p.id === action.person.id )
+      if( pos !== -1) {
+        updatedPeople.splice(pos, 1, action.person)
+      }
+
+      return {...state, people: updatedPeople}
+    }
+    case 'SEARCH_BY_NAME': {
+      const result = state.people.filter( p => p.name.toLowerCase().indexOf(action.query.toLowerCase()) > -1 )
+      console.log('*** SEARCH_BY_NAME', result)
+
+      return {...state, searchResult: result}
     }
     default: return state
   }
