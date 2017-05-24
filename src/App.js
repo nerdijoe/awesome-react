@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route } from 'react-router-dom'
+import { Container } from 'semantic-ui-react'
 
 import './App.css';
 import store from './store/manageStore'
@@ -18,7 +19,7 @@ class App extends Component {
         <BrowserRouter>
 
 
-          <div>
+          <Container>
             <Nav />
 
             <Route exact path='/' component={Home} />
@@ -26,7 +27,7 @@ class App extends Component {
             <Route path='/person/:id' component={(props) => <Person match={props.match} />} />
             <Route path='/personedit/:id' component={(props) => <PersonEdit match={props.match} />} />
 
-          </div>
+          </Container>
 
 
 

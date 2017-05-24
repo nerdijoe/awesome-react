@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Title from './core/Title'
-import MyButton from './core/Button'
+// import MyButton from './core/Button'
 import ProfilePhoto from '../assets/images/ewoks.jpg'
 import { Button, Card, Image, List } from 'semantic-ui-react'
 
@@ -29,16 +29,6 @@ class Home extends React.Component {
       return (
         <div>
           <Title>Home</Title>
-          <ul>
-            { this.props.people.map( p => {
-              return (
-                <li key={p.url}>
-                  <Button color='green' onClick={() => { this.props.addPersonToDb(p) }}>Add</Button>
-                  {p.name}
-                </li>
-              )
-            })}
-          </ul>
 
           <Card.Group>
 
@@ -79,7 +69,7 @@ class Home extends React.Component {
                   <Card.Content extra>
                     <div className='ui two buttons'>
                       <Button basic color='green' onClick={() => { this.props.addPersonToDb(p) }} >Add</Button>
-                      
+
                     </div>
                   </Card.Content>
                 </Card>
