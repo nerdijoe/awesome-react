@@ -5,7 +5,7 @@ import Title from './core/Title'
 // import MyButton from './core/Button'
 import ProfilePhoto from '../assets/images/ewoks.jpg'
 import YoutubePlaceholder from '../assets/images/youtube_jimmy.jpg'
-import { Button, Card, Image, List, Dimmer, Loader, Segment, Embed } from 'semantic-ui-react'
+import { Button, Card, Image, List, Dimmer, Loader, Segment, Embed, Grid} from 'semantic-ui-react'
 
 // redux
 import { fetchFromAPI, fetchAllFromAPI, addPersonToDb } from '../actions'
@@ -23,12 +23,13 @@ class Home extends React.Component {
       return (
         <div>
           <Segment>
+            <br/>
             <Dimmer active inverted>
               <Loader inverted>Loading data from galaxy far away ...</Loader>
             </Dimmer>
 
-            <Image src='/assets/images/wireframe/short-paragraph.png' />
-            <br/>
+            
+            <br/><br/>
           </Segment>
         </div>
       )
@@ -37,12 +38,18 @@ class Home extends React.Component {
       return (
         <div>
           <Title>Home</Title>
+          <div>
+            <Embed
+              id='ZTLAx3VDX7g'
+              placeholder={YoutubePlaceholder}
+              source='youtube'
+            />
+          </div>
 
-          <Embed
-            id='ZTLAx3VDX7g'
-            placeholder={YoutubePlaceholder}
-            source='youtube'
-          />
+          <Grid>
+            <Grid.Row></Grid.Row>
+            <Grid.Row></Grid.Row>
+          </Grid>
 
           <Card.Group>
 
