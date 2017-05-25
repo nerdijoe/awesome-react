@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { Form, Input, TextArea, Button, Grid } from 'semantic-ui-react'
 
 import { getPersonById, editPersonInDb } from '../actions'
 
@@ -60,12 +61,27 @@ class PersonEdit extends React.Component {
       return (
         <div>
           <Title>Edit</Title>
-          {this.props.person.name}
-          <form onSubmit={(e) => { this.handleSubmit(e)}}>
-            Name<input type="text" onChange={(e) => {this.handleChangeName(e)}} value={this.state.name} />
-            Notes<input type="text" onChange={(e) => {this.handleChangeNotes(e)}} value={this.state.notes} />
-            <button type="submit">Save</button>
-          </form>
+
+          <Grid columns={3}>
+            <Grid.Row>
+
+
+              <Grid.Column>
+                <Form onSubmit={(e) => { this.handleSubmit(e)}}>
+                  <Form.Group widths='equal'>
+                    <Form.Field id='form-input-control-first-name' control={Input} label='Name' placeholder='First name' onChange={(e) => {this.handleChangeName(e)}} value={this.state.name}/>
+                  </Form.Group>
+                  <Form.Field id='form-textarea-control-opinion' control={TextArea} label='Notes' placeholder='Notes' onChange={(e) => {this.handleChangeNotes(e)}} value={this.state.notes} />
+
+                   <Button basic color='green' type='submit'>Save</Button>
+                </Form>                
+              </Grid.Column>
+              <Grid.Column></Grid.Column>
+              <Grid.Column></Grid.Column>
+
+
+            </Grid.Row>
+          </Grid>
 
         </div>
       )

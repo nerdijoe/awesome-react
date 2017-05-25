@@ -5,20 +5,37 @@ import Title from './core/Title'
 // import MyButton from './core/Button'
 import ProfilePhoto from '../assets/images/ewoks.jpg'
 import YoutubePlaceholder from '../assets/images/youtube_jimmy.jpg'
-import { Button, Card, Image, List, Dimmer, Loader, Segment, Embed, Grid} from 'semantic-ui-react'
+import { Button, Card, Image, List, Dimmer, Loader, Segment, Embed, Grid, Modal } from 'semantic-ui-react'
 
 // redux
 import { fetchFromAPI, fetchAllFromAPI, addPersonToDb } from '../actions'
 
 
 class Home extends React.Component {
+  state = { open: false }
+
   componentDidMount() {
     console.log(`Home componentDidMount`)
     // this.props.fetchFromAPI(this.props.index)
     this.props.fetchAllFromAPI()
   }
 
+  show = (size) => {
+    this.setState({ size, open: true })
+    console.log('-----> Modal this.show')
+  }
+  close = () => this.setState({ open: false })
+
+  handleClick(p) {
+    this.show('small')
+    this.props.addPersonToDb(p)
+    console.log('here')
+
+  }
+
   render() {
+    const { open, size } = this.state
+
     if(this.props.people.length === 0) {
       return (
         <div>
@@ -55,7 +72,7 @@ class Home extends React.Component {
 
             { this.props.people.map( p => {
               return (
-                <Card key={p.id}>
+                <Card key={p.url}>
                   <Card.Content>
                     <Image floated='right' size='tiny' src={ProfilePhoto} />
                     <Card.Header>
@@ -89,7 +106,7 @@ class Home extends React.Component {
                   </Card.Content>
                   <Card.Content extra>
                     <div className='ui two buttons'>
-                      <Button basic color='green' onClick={() => { this.props.addPersonToDb(p) }} >Add</Button>
+                      <Button basic color='green' onClick={() => { this.handleClick(p) }} >Add</Button>
 
                     </div>
                   </Card.Content>
@@ -99,6 +116,14 @@ class Home extends React.Component {
 
           </Card.Group>
 
+
+
+        <Modal size={size} open={open} onClose={this.close}>
+          <Modal.Content>
+            <p>This character has been added to User Data</p>
+          </Modal.Content>
+
+        </Modal>
 
         </div>
       )
