@@ -2,7 +2,7 @@
   "people": [
     {
       "name": "Obi-Wan Kenobi",
-      "notes": "haha saaa blahb baba",
+      "notes": "fav char ever",
       "id": "0dc8131d-d2e3-4e73-a89d-880682c38445"
     },
     {
@@ -12,18 +12,13 @@
     },
     {
       "name": "Luke Skywalker",
-      "notes": "test ggg ddd",
+      "notes": "I'm looking for my father",
       "id": "aae3d137-d3b8-4094-977c-fa31e1f93e8d"
     },
     {
-      "name": "Obi-Wan Kenobi",
-      "notes": "hey",
-      "id": "773bd381-16a3-443f-9579-de7687b4f768"
-    },
-    {
+      "id": "8685b173-97e8-40bd-93c6-5be17a8d0cf2",
       "name": "Leia Organa",
-      "notes": "gggg",
-      "id": "bb106fab-9b0f-4b12-9da6-a41de7eadcb0"
+      "notes": ""
     }
   ],
   "films": []

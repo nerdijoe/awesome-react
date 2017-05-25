@@ -15,7 +15,7 @@ const UserApi = (state = initialState, action) => {
       const updatedPeople = action.people
       // also update lastid
       const updatedLastid = updatedPeople.length
-      return {...state, people: updatedPeople, lastid: updatedLastid}
+      return {...state, people: updatedPeople, searchResult: updatedPeople, lastid: updatedLastid}
     }
     case 'ADD_PERSON': {
       const person = action.person
@@ -32,7 +32,7 @@ const UserApi = (state = initialState, action) => {
         updatedPeople.splice(pos, 1)
       }
 
-      return {...state, people: updatedPeople}
+      return {...state, people: updatedPeople, searchResult: updatedPeople }
     }
     case 'GET_PERSON_BY_ID': {
       let pos = state.people.findIndex(p => p.id === action.id )

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Button, Feed, Icon } from 'semantic-ui-react'
+import { Button, Image, Header, Table, Dimmer, Loader, Segment} from 'semantic-ui-react'
 
 import { fetchPeopleFromUserAPI, deletePersonInDb } from '../actions'
 
@@ -17,64 +17,79 @@ class UserData extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <h2>User Data</h2>
-        <ul>
-          {this.props.people.map( p => {
-            return (
-              <li key={p.id}>
-                <Button handleClick={() => { this.props.deletePersonInDb(p.id)}}>x</Button>
-                {p.name} - {p.notes}
-                <Link to={`/person/${p.id}`} > detail </Link>
-                <Link to={`/personedit/${p.id}`} > edit </Link>
-              </li>
-            )
-          })}
-        </ul>
+    if(this.props.people.length === 0) {
+      return (
+        <div>
+          <Segment>
+            <br/>
+            <Dimmer active inverted>
+              <Loader inverted>Loading data from galaxy far away ...</Loader>
+            </Dimmer>
 
-        <Feed>
-          {this.props.people.map( p => {
-            return (
-              <Feed.Event key={p.id}>
-                <Feed.Label>
-                  <img src={ProfilePhoto} />
-                </Feed.Label>
-                <Feed.Content>
-                  <Feed.Summary>
-                    <Feed.User>{p.name}</Feed.User>
-                    <Feed.Date>{p.notes}</Feed.Date>
-                  </Feed.Summary>
-                  <Feed.Extra text></Feed.Extra>
-                  <Feed.Meta>
-                    <Feed.Like>
-                      <Icon name='delete' onClick={() => { this.props.deletePersonInDb(p.id)}}/>
-                    </Feed.Like>
-                    <Feed.Like>
+            
+            <br/><br/>
+          </Segment>
+        </div>
+      )
+    }
+    else {
+  
+      return (
+        <div>
+          <h2>User Data</h2>
+
+          <SearchPerson />
+
+          <Table basic='very' celled collapsing fixed>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell width={5} >Name</Table.HeaderCell>
+                <Table.HeaderCell width={9}>Notes</Table.HeaderCell>
+                <Table.HeaderCell width={4}>Action</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+
+            <Table.Body>
+
+              { this.props.result.map( p => {
+                return (
+                  <Table.Row key={p.id}>
+                    <Table.Cell>
+                      <Header as='h4' image>
+                        <Image src={ProfilePhoto} shape='rounded' size='mini' />
+                        <Header.Content>
+                          <Link to={`/person/${p.id}`} > {p.name} </Link>
+                          <Header.Subheader></Header.Subheader>
+                        </Header.Content>
+                      </Header>
+                    </Table.Cell>
+                    <Table.Cell>
+                      {p.notes}
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Button circular color='red' icon='delete' onClick={() => { this.props.deletePersonInDb(p.id)}} />
                       <Link to={`/personedit/${p.id}`} >
-                        <Icon name='edit' />
+                        
+                        <Button circular color= 'yellow' icon='edit' />
                       </Link>
+                    </Table.Cell>
 
-                    </Feed.Like>
-                  </Feed.Meta>
-                </Feed.Content>
-              </Feed.Event>
-            )
-          })}
+                  </Table.Row>            )
+              })}
 
+            </Table.Body>
+          </Table>
 
-        </Feed>
-
-
-        <SearchPerson />
-      </div>
-    )
+        </div>
+      )
+    } // end else
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    people: state.UserApi.people
+    people: state.UserApi.people,
+    result: state.UserApi.searchResult
   }
 }
 
