@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import Title from './core/Title'
 // import MyButton from './core/Button'
 import ProfilePhoto from '../assets/images/ewoks.jpg'
-import { Button, Card, Image, List } from 'semantic-ui-react'
+import YoutubePlaceholder from '../assets/images/youtube_jimmy.jpg'
+import { Button, Card, Image, List, Dimmer, Loader, Segment, Embed } from 'semantic-ui-react'
 
 // redux
 import { fetchFromAPI, fetchAllFromAPI, addPersonToDb } from '../actions'
@@ -21,7 +22,14 @@ class Home extends React.Component {
     if(this.props.people.length === 0) {
       return (
         <div>
-          <p>Loading data from galaxy far away...</p>
+          <Segment>
+            <Dimmer active inverted>
+              <Loader inverted>Loading data from galaxy far away ...</Loader>
+            </Dimmer>
+
+            <Image src='/assets/images/wireframe/short-paragraph.png' />
+            <br/>
+          </Segment>
         </div>
       )
     }
@@ -29,6 +37,12 @@ class Home extends React.Component {
       return (
         <div>
           <Title>Home</Title>
+
+          <Embed
+            id='ZTLAx3VDX7g'
+            placeholder={YoutubePlaceholder}
+            source='youtube'
+          />
 
           <Card.Group>
 

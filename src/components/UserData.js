@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Button, Feed, Icon } from 'semantic-ui-react'
+import { Button, Feed, Icon, Image } from 'semantic-ui-react'
 
 import { fetchPeopleFromUserAPI, deletePersonInDb } from '../actions'
 
@@ -38,7 +38,7 @@ class UserData extends React.Component {
             return (
               <Feed.Event key={p.id}>
                 <Feed.Label>
-                  <img src={ProfilePhoto} />
+                  <Image src={ProfilePhoto} />
                 </Feed.Label>
                 <Feed.Content>
                   <Feed.Summary>
