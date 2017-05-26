@@ -47,12 +47,14 @@ export const addAllFromAPI = (data) => {
 }
 
 export const fetchAllFromAPI = (index) => {
+  console.log(`========= index=${index}`);
   return (dispatch) => {
-    fetch(`http://swapi.co/api/people/`)
+    fetch(`http://swapi.co/api/people/?page=${index}`)
     .then( res => res.json() )
     .then( res => {
-      console.log('fetchAllFromAPI', res)
+      console.log('actions fetchAllFromAPI', res)
       dispatch(addAllFromAPI(res.results))
+      dispatch(incrementIndex())
     })
   }
 }

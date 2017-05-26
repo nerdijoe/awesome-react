@@ -21,13 +21,18 @@
       "id": "8685b173-97e8-40bd-93c6-5be17a8d0cf2"
     },
     {
-      "name": "Darth Vader",
-      "notes": "yaayayaya",
-      "id": "b28b0e3e-1848-4f28-b487-2921f6ed393f"
+      "id": "66a53d3f-e8a2-4651-9ebf-11f1a2c0ff27",
+      "name": "Jar Jar Binks",
+      "notes": ""
     },
     {
-      "id": "42ceef8a-1ce3-4ff1-b91a-2163cad7424b",
-      "name": "Luke Skywalker",
+      "id": "91e4a4ef-02ce-49a1-b1c6-74fa49d7acb6",
+      "name": "Han Solo",
+      "notes": ""
+    },
+    {
+      "id": "96ddec0f-ec18-497b-a781-ce804589eb36",
+      "name": "Chewbacca",
       "notes": ""
     }
   ],

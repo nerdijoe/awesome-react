@@ -19,7 +19,8 @@ const StarwarsApi = (state = initialState, action) => {
       return {...state, index: state.index+1 }
     }
     case ADD_ALL_FROM_API: {
-      const people = action.people
+      // const people = action.people
+      const people = [...state.people, ...action.people]
       return {...state, people: people}
     }
     default: return state

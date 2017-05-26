@@ -15,9 +15,9 @@ class Home extends React.Component {
   state = { open: false }
 
   componentDidMount() {
-    console.log(`Home componentDidMount`)
+    console.log(`Home componentDidMount, index=${this.props.index}`)
     // this.props.fetchFromAPI(this.props.index)
-    this.props.fetchAllFromAPI()
+    this.props.fetchAllFromAPI(this.props.index)
   }
 
   show = (size) => {
@@ -33,6 +33,10 @@ class Home extends React.Component {
 
   }
 
+  handleClickGenerate() {
+    this.props.fetchAllFromAPI(this.props.index)
+  }
+
   render() {
     const { open, size } = this.state
 
@@ -45,7 +49,7 @@ class Home extends React.Component {
               <Loader inverted>Loading data from galaxy far away ...</Loader>
             </Dimmer>
 
-            
+
             <br/><br/>
           </Segment>
         </div>
@@ -116,7 +120,9 @@ class Home extends React.Component {
 
           </Card.Group>
 
+          <Grid> <Grid.Row></Grid.Row> <Grid.Row></Grid.Row>  </Grid>
 
+          <Button color='green' onClick={() => {this.handleClickGenerate()}} > Show more </Button>
 
         <Modal size={size} open={open} onClose={this.close}>
           <Modal.Content>
@@ -142,7 +148,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchFromAPI: (index) => { dispatch(fetchFromAPI(index)) },
-    fetchAllFromAPI: () => {dispatch(fetchAllFromAPI())},
+    fetchAllFromAPI: (index) => {dispatch(fetchAllFromAPI(index))},
     addPersonToDb: (person) => {dispatch(addPersonToDb(person))}
   }
 }
