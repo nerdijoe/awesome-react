@@ -10,7 +10,7 @@ import Home from './components/Home'
 import UserData from './components/UserData'
 import Person from './components/Person'
 import PersonEdit from './components/PersonEdit'
-
+import Footer from './components/Footer'
 
 class App extends Component {
   render() {
@@ -27,6 +27,7 @@ class App extends Component {
             <Route path='/person/:id' component={(props) => <Person match={props.match} />} />
             <Route path='/personedit/:id' component={(props) => <PersonEdit match={props.match} />} />
 
+            <Footer />
           </Container>
 
 
