@@ -16,9 +16,14 @@
       "id": "aae3d137-d3b8-4094-977c-fa31e1f93e8d"
     },
     {
-      "id": "8685b173-97e8-40bd-93c6-5be17a8d0cf2",
       "name": "Leia Organa",
-      "notes": ""
+      "notes": "how you doin'",
+      "id": "8685b173-97e8-40bd-93c6-5be17a8d0cf2"
+    },
+    {
+      "name": "Darth Vader",
+      "notes": "yaayayaya",
+      "id": "b28b0e3e-1848-4f28-b487-2921f6ed393f"
     }
   ],
   "films": []

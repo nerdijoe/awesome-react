@@ -46,7 +46,7 @@ const UserApi = (state = initialState, action) => {
         updatedPeople.splice(pos, 1, action.person)
       }
 
-      return {...state, people: updatedPeople}
+      return {...state, people: updatedPeople, searchResult: updatedPeople }
     }
     case 'SEARCH_BY_NAME': {
       const result = state.people.filter( p => p.name.toLowerCase().indexOf(action.query.toLowerCase()) > -1 )
