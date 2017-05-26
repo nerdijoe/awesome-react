@@ -24,6 +24,11 @@
       "name": "Darth Vader",
       "notes": "yaayayaya",
       "id": "b28b0e3e-1848-4f28-b487-2921f6ed393f"
+    },
+    {
+      "id": "42ceef8a-1ce3-4ff1-b91a-2163cad7424b",
+      "name": "Luke Skywalker",
+      "notes": ""
     }
   ],
   "films": []
